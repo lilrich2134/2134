@@ -175,19 +175,19 @@ const noCache = { maxAge: 0, etag: false, lastModified: false, setHeaders: (res)
 //app.use('/images', express.static(path.join(frontendPath, 'images')));
 //app.get('/manifest.json', (req, res) => res.sendFile(path.join(frontendPath, 'manifest.json')));
 //app.get('/sw.js', (req, res) => {
-  res.setHeader('Content-Type', 'application/javascript');
-  res.setHeader('Cache-Control', 'no-cache');
+  //res.setHeader('Content-Type', 'application/javascript');
+  //res.setHeader('Cache-Control', 'no-cache');
   //res.sendFile(path.join(frontendPath, 'sw.js'));
 //});
 
 //app.get('/', (req, res) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  //res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   //res.sendFile(path.join(frontendPath, 'index.html'));
  //});
 
 app.get('/*path', (req, res, next) => {
   if (req.path.startsWith('/api')) return next();
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  //res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   //res.sendFile(path.join(frontendPath, 'index.html'), (err) => {
     if (err) next(err);
   });
