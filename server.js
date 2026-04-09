@@ -163,35 +163,35 @@ app.post('/api/config/slow-mode', authenticateToken, (req, res) => {
   });
 });
 
-const frontendPath = path.resolve(__dirname, '../frontend');
+//const frontendPath = path.resolve(__dirname, '../frontend');
 const noCache = { maxAge: 0, etag: false, lastModified: false, setHeaders: (res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
 }};
-app.use('/css', express.static(path.join(frontendPath, 'css'), noCache));
-app.use('/js', express.static(path.join(frontendPath, 'js'), noCache));
-app.use('/icons', express.static(path.join(frontendPath, 'icons')));
-app.use('/images', express.static(path.join(frontendPath, 'images')));
-app.get('/manifest.json', (req, res) => res.sendFile(path.join(frontendPath, 'manifest.json')));
-app.get('/sw.js', (req, res) => {
+//app.use('/css', express.static(path.join(frontendPath, 'css'), noCache));
+//app.use('/js', express.static(path.join(frontendPath, 'js'), noCache));
+//app.use('/icons', express.static(path.join(frontendPath, 'icons')));
+//app.use('/images', express.static(path.join(frontendPath, 'images')));
+//app.get('/manifest.json', (req, res) => res.sendFile(path.join(frontendPath, 'manifest.json')));
+//app.get('/sw.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile(path.join(frontendPath, 'sw.js'));
-});
+  //res.sendFile(path.join(frontendPath, 'sw.js'));
+//});
 
-app.get('/', (req, res) => {
+//app.get('/', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
+  //res.sendFile(path.join(frontendPath, 'index.html'));
+ //});
 
 app.get('/*path', (req, res, next) => {
   if (req.path.startsWith('/api')) return next();
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.sendFile(path.join(frontendPath, 'index.html'), (err) => {
+  //res.sendFile(path.join(frontendPath, 'index.html'), (err) => {
     if (err) next(err);
   });
-});
+//});
 
 app.use((err, req, res, next) => {
   console.error('Server error:', err);
